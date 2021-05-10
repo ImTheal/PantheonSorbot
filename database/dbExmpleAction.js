@@ -1,15 +1,12 @@
 const stuctDb = require('./databaseArchi/initialiseArchi');
 const libConnection = require('./mongoose-connection');
-const { mongoose } = libConnection;
 
-const getAllMembers = () => {
-  stuctDb.Member.find(function (err, members) {
-    if (err) return console.error(err);
-    return console.log(members);
-  })
+const getAllMembersDB = async () => {
+  const members = await stuctDb.Member.find({}).exec();
+  return members;
 }
 
 module.exports = {
-  getAllMembers
+  getAllMembersDB
 }
 
