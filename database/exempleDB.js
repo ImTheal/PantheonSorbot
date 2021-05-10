@@ -4,4 +4,5 @@ libConnection.run().then(() =>{
         lib.getAllMembersDB().then((members) =>{
             console.log(members);
         })
+        lib.addMember
 })

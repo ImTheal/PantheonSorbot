@@ -8,6 +8,7 @@ const { Role, roleSchema } = require('./role');
 const { AssoGroupRole, assoGroupRoleSchema } = require('./assoGroupRole');
 const { AssoMemberGroup, assoMemberGroupSchema } = require('./assoMemberGroup');
 
+
 module.exports = {
   memberSchema, Member,
   codeSchema, Code,
@@ -17,4 +18,5 @@ module.exports = {
   roleSchema, Role,
   assoGroupRoleSchema, AssoGroupRole,
   assoMemberGroupSchema, AssoMemberGroup,
+  
 };
