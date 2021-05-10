@@ -32,4 +32,4 @@ bot.on('ready', async () => {
 })
 
 
-bot.login(process.env.TOKENSOR)
+bot.login("ODQwNTgxMzU5NDcwMjQ3OTM3.YJaSZQ.yjunV4FG3_Bo3DyfW6n-xSH9pas")
