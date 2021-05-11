@@ -1,5 +1,5 @@
-const {getAllMembersDB } = require('./dbExmpleAction');
+const {getAllMembersDB, createAndGetOneGroupDB, getAllCalendarsDB} = require('./dbExmpleAction');
 
 module.exports = {
-    getAllMembersDB
+    getAllMembersDB, createAndGetOneGroupDB, getAllCalendarsDB
 }
