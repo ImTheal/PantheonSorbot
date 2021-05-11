@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const classeSchema = new mongoose.Schema({
-    calendar: {type: mongoose.Schema.Types.ObjectId, ref: 'calendar'},
-    dateJour: Date,
-    heureDebut: Date,
-    heureFin: Date
+    prof:{type: mongoose.Schema.Types.ObjectId, ref: 'Member'},
+    dateDebut: Date,
+    dateFin: Date
 })
 
 //here to deploy methods
