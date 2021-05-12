@@ -11,7 +11,7 @@ const createAndGetOneGroupDB = async () => {
     return group;
 }
 
-const getCalendar = (assos) => {
+const getRoleFromAsso = (assos) => {
     return new Promise(((resolve) => {
         let promises = [];
         assos.forEach((asso) => {
@@ -25,16 +25,45 @@ const getCalendar = (assos) => {
 
 }
 
+function getClassById(_id) {
+    return structDb.Class.findById({_id}).exec();
+}
+
+const getClasesById = (calendar) => {
+    console.log(calendar)
+    return new Promise((resolve) => {
+        let promises = [];
+        calendar.forEach((classId) => {
+            const id = mongoose.Types.ObjectId(classId);
+            promises.push(getClassById(id))
+        })
+        Promise.all(promises).then(value => {
+            resolve(value);
+        })
+    })
+
+}
+
 const getAllClassesFromMember = (id) => {
-    getMemberByDiscordId(id).then((member) => {
-        getAssoGroupFromMember(member).then(assos =>{
-            getAssoRolefromGroupDB(assos[0].Group).then(assos => {
-                getCalendar(assos).then(value => {
-                    console.log(value)
+    return new Promise(resolve => {
+        getMemberByDiscordId(id).then((member) => {
+            getAssoGroupFromMember(member).then(assos => {
+                getAssoRolefromGroupDB(assos[0].Group).then(assos => {
+                    getRoleFromAsso(assos).then(value => {
+                        let calendar = [];
+                        value.forEach(v => {
+                            const items = v.calendar;
+                            calendar = calendar.concat(items);
+                        })
+                        getClasesById(calendar).then(r => {
+                            resolve(r);
+                        })
+                    });
                 });
             });
-        });
+        })
     })
+
 
 }
 
