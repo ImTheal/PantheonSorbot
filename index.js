@@ -28,7 +28,22 @@ bot.on('ready', async () => {
       }
     }
   }
-
+  
+    const readFunc = (dir) => {
+    const files = fs.readdirSync(path.join(__dirname, dir))
+    for (const file of files) {
+      const stat = fs.lstatSync(path.join(__dirname, dir, file))
+      if (stat.isDirectory()) {
+        readFunc(path.join(dir, file))
+      } else {
+        const option = require(path.join(__dirname, dir, file))
+        let Func = require(`./functionnalities/${file}`)
+        Func(bot)
+        console.log(`Fonctionnalité chargée : ${file}`)
+      }
+    }
+  }
+  readFunc('functionnalities')
   readCommands('commands')
 })
 
