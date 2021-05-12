@@ -22,12 +22,20 @@ const getRoleFromAsso = (assos) => {
             resolve(value);
         })
     }))
-
 }
 
 function getClassById(_id) {
     return structDb.Class.findById({_id}).exec();
 }
+
+const getNameFromIdMember = (_id) => {
+    return new Promise((resolve) => {
+        structDb.Member.findById({_id}).exec().then((member) => {
+            resolve(member.firstname + ' ' + member.lastname);
+        });
+    })
+}
+
 
 const getClasesById = (calendar) => {
     console.log(calendar)
@@ -44,6 +52,35 @@ const getClasesById = (calendar) => {
 
 }
 
+function getClasses(element) {
+    return new Promise((resolve) => {
+        const idMember = mongoose.Types.ObjectId(element.prof);
+        getNameFromIdMember(idMember).then((name) => {
+            const subject = element.subject;
+            const dateD = element.dateDebut
+            const dateF = element.dateFin
+            resolve({
+                subject,
+                name,
+                dateD,
+                dateF
+            })
+        })
+    })
+}
+
+function fillClasswithProfName(r) {
+    return new Promise((resolve) => {
+        let promises = []
+        r.forEach(element => {
+            promises.push(getClasses(element));
+        })
+        Promise.all(promises).then(values => {
+            resolve(values);
+        })
+    })
+}
+
 const getAllClassesFromMember = (id) => {
     return new Promise(resolve => {
         getMemberByDiscordId(id).then((member) => {
@@ -55,16 +92,14 @@ const getAllClassesFromMember = (id) => {
                             const items = v.calendar;
                             calendar = calendar.concat(items);
                         })
-                        getClasesById(calendar).then(r => {
-                            resolve(r);
+                        getClasesById(calendar).then(result => {
+                            resolve(fillClasswithProfName(result));
                         })
                     });
                 });
             });
         })
     })
-
-
 }
 
 const getRoleById = (_id) => {
@@ -108,6 +143,7 @@ const createAssoMemberGroup = (member, group) => {
 
 module.exports = {
     getAllMembersDB,
+    getNameFromIdMember,
     createAndGetOneGroupDB,
     getAllClassesFromMember,
     getMemberByDiscordId,
