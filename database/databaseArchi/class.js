@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const classeSchema = new mongoose.Schema({
+const classSchema = new mongoose.Schema({
     prof:{type: mongoose.Schema.Types.ObjectId, ref: 'Member'},
     dateDebut: Date,
     dateFin: Date
@@ -8,8 +8,8 @@ const classeSchema = new mongoose.Schema({
 
 //here to deploy methods
 
-const Classe = mongoose.model('Classe',classeSchema);
+const Class = mongoose.model('Class',classSchema);
 
 module.exports = {
-    classeSchema, Classe
+    classSchema, Class
 }
