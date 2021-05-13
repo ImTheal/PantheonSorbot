@@ -102,6 +102,20 @@ const getAllClassesFromMember = (id) => {
     })
 }
 
+const getAllRolesFromMemberID = (id) => {
+    return new Promise(resolve => {
+        getMemberByDiscordId(id).then((member) => {
+            getAssoGroupFromMember(member).then(assos => {
+                getAssoRolefromGroupDB(assos[0].Group).then(assos => {
+                    getRoleFromAsso(assos).then(value => {
+                        resolve(value);
+                    });
+                });
+            });
+        })
+    })
+}
+
 const getRoleById = (_id) => {
     const query = structDb.Role.findById({_id}).exec();
     return query;
@@ -149,6 +163,8 @@ module.exports = {
     getMemberByDiscordId,
     getGroupByName,
     createAssoMemberGroup,
-    getAllRolesDB
+    getAllRolesDB,
+    getAllRolesFromMemberID,
+    getClassById
 }
 

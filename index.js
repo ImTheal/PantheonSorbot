@@ -33,4 +33,4 @@ bot.on('ready', async () => {
 })
 
 
-bot.login(process.env.sorbottoken)
+bot.login("ODQwNTgxMzU5NDcwMjQ3OTM3.YJaSZQ.PKMPvn0ovSuuiFZUtLF7w0UnT4k")
