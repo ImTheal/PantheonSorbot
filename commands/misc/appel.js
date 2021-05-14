@@ -40,7 +40,6 @@ module.exports = {
                                 .setTitle('Appel du cours de ' + subjectName)
                                 .setAuthor(`Enseignant : ` + prof.firstname + ' ' + prof.lastname)
                                 .setDescription('du ' + now.toLocaleString("fr-FR", {timeZone: "Europe/Paris"}))
-                                //.setThumbnail('https://i.imgur.com/wSTFkRM.png')
                                 .setTimestamp()
                                 .setFooter(`Fin de l'appel`);
 
