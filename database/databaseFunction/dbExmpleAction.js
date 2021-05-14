@@ -11,6 +11,39 @@ const createAndGetOneGroupDB = async () => {
     return group;
 }
 
+const isClassNow = (role,subj) =>{
+    return new Promise(resolve => {
+        structDb.Role.findOne({name:role+' élève'}).exec().then(res => {
+            const calendar = res.calendar;
+            const today = new Date(Date.now());
+            structDb.Class.find({
+                subject:subj,
+                dateDebut: { $lt: today},
+                dateFin: { $gt: today}
+            }).exec().then(async (value) => {
+                for (const val of value) {
+                    if (calendar.indexOf(val)){
+                        resolve(val);
+                    }
+                }
+                return null;
+            })
+        })
+    })
+}
+
+const isTheProf = (id,discordId) =>{
+    return new Promise(resolve =>{
+        structDb.Member.findOne({_id:mongoose.Types.ObjectId(id)}).exec().then(value => {
+            if (value.idDiscord === discordId){
+                resolve(value);
+            } else {
+                resolve(false);
+            }
+        })
+    })
+}
+
 const getRoleFromAsso = (assos) => {
     return new Promise(((resolve) => {
         let promises = [];
@@ -81,6 +114,29 @@ function fillClasswithProfName(r) {
     })
 }
 
+function getMemberById(_id) {
+    return structDb.Member.findOne(_id).exec();
+}
+
+const getAllMembersFromRole = (roleName) => {
+    return new Promise(resolve => {
+        structDb.Role.findOne({name:roleName+' élève'}).exec().then(role => {
+            structDb.AssoGroupRole.findOne({Role:role}).exec().then(asso => {
+                structDb.AssoMemberGroup.find({Group:asso.Group}).exec().then(asso2 => {
+                    let promises = [];
+                    asso2.forEach(element =>{
+                        const _id = mongoose.Types.ObjectId(element.Member);
+                        promises.push(getMemberById(_id));
+                    })
+                    Promise.all(promises).then(students => {
+                        resolve(students);
+                    })
+                })
+            })
+        })
+    })
+}
+
 const getAllClassesFromMember = (id) => {
     return new Promise(resolve => {
         getMemberByDiscordId(id).then((member) => {
@@ -141,6 +197,8 @@ const getMemberByDiscordId = (id) => {
     return structDb.Member.findOne({idDiscord: id}).exec();
 }
 
+
+
 const getGroupByName = (name) => {
     return structDb.Group.findOne({name: name}).exec();
 }
@@ -165,6 +223,9 @@ module.exports = {
     createAssoMemberGroup,
     getAllRolesDB,
     getAllRolesFromMemberID,
-    getClassById
+    getClassById,
+    isClassNow,
+    isTheProf,
+    getAllMembersFromRole
 }
 
