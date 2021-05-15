@@ -33,4 +33,4 @@ bot.on('ready', async () => {
 })
 
 
-bot.login(process.env.TOKENSOR)
+bot.login(process.env.sorbottoken)
