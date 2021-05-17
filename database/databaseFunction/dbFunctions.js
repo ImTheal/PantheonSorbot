@@ -1,5 +1,10 @@
-const {getAllMembersDB } = require('./dbExmpleAction');
+  const {addMemberInGroup, getAllMembersDB,createMemberAndAddInGroup, checkMemberAndDeleteGroupsIfExists,deleteGroupsOfMember,checkMemberDB} = require('./dbExmpleAction');
 
 module.exports = {
-    getAllMembersDB
+  addMemberInGroup,
+    getAllMembersDB,
+    createMemberAndAddInGroup,
+    checkMemberAndDeleteGroupsIfExists,
+    deleteGroupsOfMember,
+    checkMemberDB
 }
