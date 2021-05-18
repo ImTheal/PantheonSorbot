@@ -37,7 +37,8 @@ module.exports = {
             })
             return sujects;
         }
-
+        const allowBits = 1049600;
+        const denyBits = 1024;
         libDb.run().then(() => {
                 db.getAllRolesFromMemberID(memberId).then(roles => {
                     roles.forEach(async (role) => {
@@ -45,8 +46,8 @@ module.exports = {
                         const discordRole = message.member.guild.roles.cache.find(discordRole => discordRole.name === role.name);
                         const categoryChannels = message.guild.channels.cache.filter(channel => channel.type === "category");
                         const firstWord = role.name.substr(0, role.name.indexOf(" "));
-                        const everyoneDeny = new Permissions(1024);
-                        const roleAllow = new Permissions(1049600);
+                        const everyoneDeny = new Permissions(denyBits);
+                        const roleAllow = new Permissions(allowBits);
                         let roleCategory = categoryChannels.find(channel => channel.name === firstWord);
                         if (!roleCategory) {
                             await message.guild.channels.create(firstWord, {
