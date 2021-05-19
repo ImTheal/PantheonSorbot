@@ -1,0 +1,11 @@
+{
+  "name": "PantheonSorbot",
+  "version": "1.0.0",
+  "dependencies": {
+    "csvjson": "^5.1.0",
+    "discord.js": "^12.5.3",
+    "mongoose": "^5.12.10",
+    "node-fetch": "^2.6.1",
+    "process": "^0.11.10"
+  }
+}

@@ -1,15 +1,14 @@
 global.fetch = require('node-fetch');
 const csvjson = require('csvjson');
 const fs = require(`fs`);
-const {syncBuiltinESMExports} = require('node:module');
 module.exports = (bot) => {
     bot.on('message', message => {
 
-        const nomfichier = message.attachments.first().name
+        const nomfichier = message.attachments.first().name;
 
         if (message.attachments.first()) {//checks if an attachment is sent
             const connection = require('../database/mongoose-connection')
-            connection.run().then(() => {
+            connection.run().then(async () => {
 
                 console.log("Il y a un attachment")
                 console.log("C'est : " + message.attachments.first().name)
@@ -17,58 +16,69 @@ module.exports = (bot) => {
                 //
                 const categoryChannels = message.guild.channels.cache.filter(channel => channel.type === "category");
 
-                const isClass = nomfichier.substring(0, 5) === `Cours_`;
+                const isClass = nomfichier.substring(0, 6) === `Cours_`;
                 const className = nomfichier.substring(6).split('.').slice(0, -1).join('.')
                 const existingRole = categoryChannels.find(channel => channel.name === className);
                 console.log(className);
                 console.log(isClass);
                 if (isClass && existingRole) {//Download only png (customize this)
-                    const lesCours = download(message.attachments.first().url);//Function I will show later
+                    download(message.attachments.first().url).then(lesCours => {
+                        const db = require('../database/databaseFunction/dbFunctions')
+                        console.log(`les cours :`+lesCours);
 
-                    const db = require('../database/databaseFunction/dbFunctions')
-                    console.log(lesCours);
+                        lesCours.forEach(value =>{
 
-                    // lesNoms.forEach(el => {
-                    //
-                    //     const member={
-                    //         idDiscord:null,
-                    //         firstname:el.prenom,
-                    //         lastname:el.nom,
-                    //         email:el.mail,
-                    //         checked:false
-                    //     }
-                    //     const mem=db.checkMemberDB(member)
-                    //     if(mem){
-                    //         db.deleteGroupsOfMember(mem)
-                    //         db.addMemberInGroup(mem.nomdeclasse)
-                    //     }else{
-                    //         db.createMemberAndAddInGroup(member, className)
-                    //     }
-                    //});
+
+                            const dateString1 = value.Date + ' ' + value['Heure Debut'];
+                            const dateString2 = value.Date + ' ' + value['Heure Fin'];
+                            const dateParser = /(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+                            let match = dateString1.match(dateParser);
+                            const dateDebut = new Date(
+                                '20'+match[3],  // year
+                                match[2]-1,  // monthIndex
+                                match[1],  // day
+                                match[4],  // hours
+                                match[5],  // minutes
+                                match[6]  //seconds
+                            );
+                            match = dateString.match(dateString2);
+                            const dateFin = new Date(
+                                '20'+match[3],  // year
+                                match[2]-1,  // monthIndex
+                                match[1],  // day
+                                match[4],  // hours
+                                match[5],  // minutes
+                                match[6]  //seconds
+                            );
+
+
+
+                            // dateF = dateF.setUTCHours(dateF.setUTCHours(dateF.getUTCHours()+2))
+
+                        })
+                    })//Function I will show later
                 }
             })
-        } else {
-
         }
-
-
     });
 
 }
 
 async function download(url) {
-    console.log("On passe dans download")
-    fetch(url)
-        .then(res => {
-            //ajoute un const pour le nom du fichier selon classe
-            const dest = fs.createWriteStream('data/etudiants.csv');
-            res.body.pipe(dest);
-            fs.readFile('data/etudiants.csv', 'utf8', function (err, data) {
-                const trtr = JSON.parse(CSVToJSON(data))
-                console.log(trtr);
-                return trtr
+    return new Promise(resolve => {
+        console.log("On passe dans download")
+        fetch(url)
+            .then(async res => {
+                //ajoute un const pour le nom du fichier selon classe
+                const dest = fs.createWriteStream('data/etudiants.csv');
+                res.body.pipe(dest);
+                await fs.readFile('data/etudiants.csv', 'utf8', function (err, data) {
+                    const res = JSON.parse(CSVToJSON(data))
+                    console.log(res);
+                    resolve(res)
+                });
             });
-        });
+    })
 }
 
 function CSVToJSON(csvData) {
