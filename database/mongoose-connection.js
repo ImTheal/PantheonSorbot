@@ -23,7 +23,7 @@ mongoose.connection.on('error', (error) => {
 })
 
 const run = async () => {
-  const uri = "mongodb+srv://maxime:C3tBA7z7K1LjQfdJ@apptest.mrazn.mongodb.net/test?retryWrites=true&w=majority";
+  const uri = 'mongodb+srv://nicolas:TJE7ZhXvQKSro4SD@testnico.bakbz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
   await mongoose.connect(uri, {
     useNewUrlParser: true, 
     useUnifiedTopology: true
