@@ -1,5 +1,7 @@
-const {getAllMembersDB } = require('./dbExmpleAction');
+const { getAllMembersDB, getMemberByDiscordIdDB, getGroupIdByNameDB } = require('./dbExmpleAction');
 
 module.exports = {
-    getAllMembersDB
+    getAllMembersDB,
+    getMemberByDiscordIdDB,
+    getGroupIdByNameDB
 }

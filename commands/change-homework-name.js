@@ -1,6 +1,8 @@
 const { homeworkChannel } = require('../config.json');
 const connection = require('../database/mongoose-connection');
 const { checkHomeworkNameDB, hasRightsOnHomeworkDB, changeHomeworkNameDB } = require("../database/databaseFunction/homeworksFunctions.js");
+const { HOMEWORK } = require('../constants/homework');
+const { COMMON } = require('../constants/common');
 
 module.exports = {
     commands: 'change-homework-name',
@@ -12,6 +14,7 @@ module.exports = {
     permissions: '',
     requiredRoles: [],
     callback: async(message, args) => {
+        //Accorder la modification d'un nom seulement dans un certain channel
         if (message.channel.id !== homeworkChannel) return;
 
         try {
@@ -28,22 +31,23 @@ module.exports = {
             connection.run().then(async() => {
                 await checkHomeworkNameDB(oldName)
                     .then(({ _id, _channel }) => {
-                        if (!_id) return message.reply('Ce devoir ne semble pas exister.')
+                        if (!_id) return message.reply(HOMEWORK['HOMEWORK_NOT_FOUND'])
 
                         hasRightsOnHomeworkDB(message.author.id, _id)
                             .then(hasRights => {
-                                if (!hasRights) return message.reply('Vous n\'avez pas les droits suffisants pour modifier ce devoir.')
+                                if (!hasRights) return message.reply(HOMEWORK['INSUFFICIENT_RIGHTS'])
 
                                 const channel = message.guild.channels.cache.get(_channel);
 
                                 if (channel) channel.setName('DM-' + newName);
 
-                                changeHomeworkNameDB(_id, newName).then(res => message.reply(res ? 'L\'opération a réussi.' : 'L\'opération a échoué.'))
+                                changeHomeworkNameDB(_id, newName)
+                                    .then(res => message.reply(res ? COMMON['SUCCESSFUL_OPERATION'] : COMMON['FAILED_OPERATION']))
                             })
                     })
             })
         } catch (error) {
-            message.reply('La bonne formulation pour renommer un devoir est =change-homework-name [ancien nom] [nouveau nom]')
+            message.reply(COMMON['EXPECTED_FORM'] + ' : ' + '=change-homework-name [ancien nom] [nouveau nom]')
         }
     }
 }

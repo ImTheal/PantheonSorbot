@@ -1,5 +1,7 @@
 const connection = require('../../database/mongoose-connection');
 const { addHomeworkToStudentDB } = require("../../database/databaseFunction/homeworksFunctions.js");
+const { COMMON } = require('../../constants/common');
+const { HOMEWORK } = require('../../constants/homework');
 
 const checkAnswerType = (message, type) => {
     if (type === 'text') return message.content.length && !message.attachments.first();
@@ -20,42 +22,41 @@ module.exports = (user, homework) => {
             const answerFilter = _ => true;
             msg.channel.awaitMessages(answerFilter, {
                     max: 1,
-                    time: 1000 * 5 * 60,
+                    time: 1000 * 5 * 60, //5 minutes
                     errors: ['time']
                 })
                 .then((response) => {
                     const msg = response.first();
-                    if (msg.author.id === user.id) {
-                        if (checkAnswerType(msg, homework.type)) {
-                            response.first().reply('Êtes vous sûr de remettre ce travail (Y or N) ? L\'action est irreversible.')
-                                .then(m => {
-                                    validationFilter = message => ['Y', 'N'].includes(message.content.toUpperCase());
-                                    m.channel.awaitMessages(validationFilter, { max: 1, time: 1000 * 10, errors: ['wrong-answer'] })
-                                        .then(validationResponse => {
-                                            const response = validationResponse.first();
-                                            if (response.content.toUpperCase() === 'Y') {
-                                                connection.run().then(async() => {
-                                                    addHomeworkToStudentDB({
-                                                        _member: msg.author.id,
-                                                        _homework: homework._id,
-                                                        response: homework.type === 'text' ? msg.content : msg.attachments.first().attachment
-                                                    })
-                                                })
-                                                response.reply('Envoyé.')
-                                            } else if (response.content.toUpperCase() === 'N') response.reply('Le devoir n\'a pas été envoyé');
+
+                    //Vérification qu'il s'agit du bon utilisateur
+                    if (!msg.author.id === user.id) return;
+
+                    //Vérification du type de la réponse
+                    if (!checkAnswerType(msg, homework.type)) return msg.reply(HOMEWORK['WRONG_TYPE_ANSWER'])
+
+                    response.first().reply(HOMEWORK['SUBMIT_HOMEWORK_CONFIRMATION'])
+                        .then(m => {
+                            m.channel.awaitMessages(_ => true, { max: 1, time: 1000 * 10, errors: ['wrong-answer'] })
+                                .then(validationResponse => {
+                                    const response = validationResponse.first();
+
+                                    if (response.content.toUpperCase() !== 'Y') return response.reply(HOMEWORK['UNSENT_HOMEWORK'])
+
+                                    connection.run().then(async() => {
+                                        addHomeworkToStudentDB({
+                                            _member: msg.author.id,
+                                            _homework: homework._id,
+                                            response: homework.type === 'text' ? msg.content : msg.attachments.first().attachment
                                         })
-                                        .catch(error => {
-                                            m.channel.send('Vous avez commis une erreur lors de votre manipulation. Veuillez recommencer ultérieurement.')
-                                        })
+                                    })
+
+                                    response.reply(HOMEWORK['SENT_HOMEWORK'])
                                 })
-                        } else {
-                            msg.reply('Vous n\'avez pas réalisé la manoeuvre correctement. Veuillez recommencer ultérieurement');
-                            return;
-                        }
-                    }
+                        })
                 })
-                .catch(error =>
-                    user.send('L\'action a pris fin. Veuillez recommencer la manoeuvre.'))
+                .catch(error => {
+                    user.send(COMMON['TIME_ELAPSED']);
+                })
         })
 
 }

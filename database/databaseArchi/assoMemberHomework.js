@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const assoMemberHomeworkSchema = new mongoose.Schema({
-    _member: String, //{ type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
+    _member: String,
     _homework: { type: mongoose.Schema.Types.ObjectId, ref: 'Homework' },
     response: String
 })

@@ -1,6 +1,7 @@
 const connection = require('../database/mongoose-connection');
 const { checkHomeworkNameDB, hasRightsOnHomeworkDB } = require("../database/databaseFunction/homeworksFunctions.js");
 const sendHomeworkAnswers = require('../functionnalities/manual/send-homework-answers');
+const { HOMEWORK } = require('../constants/homework');
 
 module.exports = {
     commands: 'homework-answers',
@@ -18,11 +19,17 @@ module.exports = {
         connection.run().then(async() => {
             checkHomeworkNameDB(name)
                 .then(res => {
-                    if (res) {
-                        if (!hasRightsOnHomeworkDB(message.author.id, res._id)) return message.reply('Vous n\'avez pas les droits pour accéder aux réponses de ce devoir');
+                    //Vérification du nom
+                    if (!res)
+                        return message.reply(HOMEWORK['HOMEWORK_NOT_FOUND']);
 
-                        sendHomeworkAnswers(message.author, res._id)
-                    } else message.reply('Ce devoir ne semble pas exister pour le moment.');
+                    //Vérification des droits sur le devoir
+                    hasRightsOnHomeworkDB(message.author.id, res._id)
+                        .then(hasRights => {
+                            if (!hasRights) return message.reply(HOMEWORK['INSUFFICIENT_RIGHTS']);
+
+                            sendHomeworkAnswers(message.author, res._id)
+                        })
                 })
         })
     }

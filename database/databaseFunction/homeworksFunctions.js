@@ -5,11 +5,9 @@ const addHomeworkDB = async(item) => await structDb.Homework(item).save();
 const addHomeworkToStudentDB = async({ _homework, _member, response }) => {
     return await structDb.AssoMemberHomework.findOne({ _homework, _member }).exec()
         .then(res => {
-            if (res) {
-                return structDb.AssoMemberHomework.updateOne({ _homework, _member }, { response })
-            } else {
-                return new structDb.AssoMemberHomework({ _homework, _member, response }).save()
-            }
+            if (res) return structDb.AssoMemberHomework.updateOne({ _homework, _member }, { response })
+
+            return new structDb.AssoMemberHomework({ _homework, _member, response }).save();
         });
 }
 
