@@ -10,7 +10,7 @@ module.exports= (bot) =>{
         if(message.attachments.first()){//checks if an attachment is sent
             console.log("Il y a un attachment")
             console.log("C'est : "+message.attachments.first().name)
-            if(message.attachments.first().name == `test.csv`){//Download only png (customize this)
+            if(message.attachments.first().name === `test.csv`){//Download only png (customize this)
                 const lesNoms=download(message.attachments.first().url);//Function I will show later
             }
         }
@@ -18,8 +18,8 @@ module.exports= (bot) =>{
         const connection = require('../database/mongoose-connection')
         connection.run().then(()=>{
             const db=require('../database/databaseFunction/dbFunctions')
-            const nomdeclasse=nomfichier.split('.').slice(0, -1).join('.')
-            console.log(nomdeclasse);
+            const className=nomfichier.split('.').slice(0, -1).join('.')
+            console.log(className);
 
             lesNoms.forEach(el => {
 
@@ -35,7 +35,7 @@ module.exports= (bot) =>{
                     db.deleteGroupsOfMember(mem)
                     db.addMemberInGroup(mem.nomdeclasse)
                 }else{
-                    db.createMemberAndAddInGroup(member, nomdeclasse)
+                    db.createMemberAndAddInGroup(member, className)
                 }
             });
         })
