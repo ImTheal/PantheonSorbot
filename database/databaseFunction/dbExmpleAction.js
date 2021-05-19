@@ -158,6 +158,16 @@ const getAllClassesFromMember = (id) => {
     })
 }
 
+const addClass = (newClass) =>{
+    const classToAdd = new structDb.Class(newClass);
+    return classToAdd.save();
+}
+
+
+const getMemberByName = (firstname, lastname) => {
+    return structDb.Member.findOne({firstname, lastname}).exec();
+}
+
 const getAllRolesFromMemberID = (id) => {
     return new Promise(resolve => {
         getMemberByDiscordId(id).then((member) => {
@@ -175,6 +185,10 @@ const getAllRolesFromMemberID = (id) => {
 const getRoleById = (_id) => {
     const query = structDb.Role.findById({_id}).exec();
     return query;
+}
+
+const getRoleByName = (roleName) =>{
+    return structDb.Role.findOne({name:roleName}).exec();
 }
 
 const getAssoGroupFromMember = (member) => {
@@ -226,6 +240,9 @@ module.exports = {
     getClassById,
     isClassNow,
     isTheProf,
-    getAllMembersFromRole
+    getAllMembersFromRole,
+    getMemberByName,
+    addClass,
+    getRoleByName
 }
 

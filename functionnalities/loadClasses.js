@@ -1,6 +1,20 @@
 global.fetch = require('node-fetch');
 const csvjson = require('csvjson');
 const fs = require(`fs`);
+const {mongo} = require("mongoose");
+
+function getDateFromJSON(match) {
+    const date = new Date(
+        '20' + match[3],  // year
+        match[2] - 1,  // monthIndex
+        match[1],  // day
+        match[4],  // hours
+        match[5],  // minutes
+        match[6]  //seconds
+    );
+    return date;
+}
+
 module.exports = (bot) => {
     bot.on('message', message => {
 
@@ -24,37 +38,31 @@ module.exports = (bot) => {
                 if (isClass && existingRole) {//Download only png (customize this)
                     download(message.attachments.first().url).then(lesCours => {
                         const db = require('../database/databaseFunction/dbFunctions')
-                        console.log(`les cours :`+lesCours);
-
                         lesCours.forEach(value =>{
-
-
                             const dateString1 = value.Date + ' ' + value['Heure Debut'];
                             const dateString2 = value.Date + ' ' + value['Heure Fin'];
                             const dateParser = /(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
                             let match = dateString1.match(dateParser);
-                            const dateDebut = new Date(
-                                '20'+match[3],  // year
-                                match[2]-1,  // monthIndex
-                                match[1],  // day
-                                match[4],  // hours
-                                match[5],  // minutes
-                                match[6]  //seconds
-                            );
-                            match = dateString.match(dateString2);
-                            const dateFin = new Date(
-                                '20'+match[3],  // year
-                                match[2]-1,  // monthIndex
-                                match[1],  // day
-                                match[4],  // hours
-                                match[5],  // minutes
-                                match[6]  //seconds
-                            );
-
-
-
-                            // dateF = dateF.setUTCHours(dateF.setUTCHours(dateF.getUTCHours()+2))
-
+                            const dateDebut = getDateFromJSON(match);
+                            match = dateString2.match(dateParser);
+                            const dateFin = getDateFromJSON(match);
+                            const name = value.Professeur.split(' ')
+                            console.log(name);
+                            //TODO check si un cours est déjà prevu à ces horaires si oui modifier le sujet et prof si !=
+                            db.getMemberByName(name[0],name[1]).then(prof => {
+                                const newClass = {
+                                    subject:value.Matiere,
+                                    prof:prof._id,
+                                    dateDebut:dateDebut,
+                                    dateFin:dateFin
+                                }
+                                db.addClass(newClass).then(c => {
+                                    db.getRoleByName(className + ' élève').then(role => {
+                                        role.calendar.push(c._id)
+                                        role.save();
+                                    })
+                                });
+                            })
                         })
                     })//Function I will show later
                 }
