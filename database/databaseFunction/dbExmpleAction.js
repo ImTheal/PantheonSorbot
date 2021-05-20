@@ -177,6 +177,10 @@ const getRoleById = (_id) => {
     return query;
 }
 
+const getRoleByName = (roleName) =>{
+    return structDb.Role.findOne({name:roleName}).exec();
+}
+
 const getAssoGroupFromMember = (member) => {
     const assos = structDb.AssoMemberGroup.find({ Member: member }).exec();
     return assos;
@@ -238,4 +242,11 @@ module.exports = {
     getAllMembersDB,
     getMemberByDiscordIdDB,
     getGroupIdByNameDB
+    getAllMembersFromRole,
+    getMemberByName,
+    addClass,
+    getRoleByName,
+    getAllClasses,
+    findAndUpadateClass
 }
+
