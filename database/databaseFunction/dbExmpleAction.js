@@ -1,28 +1,28 @@
 const structDb = require('../databaseArchi/initialiseArchi');
 const mongoose = require("mongoose");
 
-const getAllMembersDB = async () => {
+const getAllMembersDB = async() => {
     const members = await structDb.Member.find({}).exec();
     return members;
 }
 
-const createAndGetOneGroupDB = async () => {
-    const group = await structDb.Group.findOne({name: 'lala'}).exec();
+const createAndGetOneGroupDB = async() => {
+    const group = await structDb.Group.findOne({ name: 'lala' }).exec();
     return group;
 }
 
-const isClassNow = (role,subj) =>{
+const isClassNow = (role, subj) => {
     return new Promise(resolve => {
-        structDb.Role.findOne({name:role+' élève'}).exec().then(res => {
+        structDb.Role.findOne({ name: role + ' élève' }).exec().then(res => {
             const calendar = res.calendar;
             const today = new Date(Date.now());
             structDb.Class.find({
-                subject:subj,
-                dateDebut: { $lt: today},
-                dateFin: { $gt: today}
-            }).exec().then(async (value) => {
+                subject: subj,
+                dateDebut: { $lt: today },
+                dateFin: { $gt: today }
+            }).exec().then(async(value) => {
                 for (const val of value) {
-                    if (calendar.indexOf(val)){
+                    if (calendar.indexOf(val)) {
                         resolve(val);
                     }
                 }
@@ -32,10 +32,10 @@ const isClassNow = (role,subj) =>{
     })
 }
 
-const isTheProf = (id,discordId) =>{
-    return new Promise(resolve =>{
-        structDb.Member.findOne({_id:mongoose.Types.ObjectId(id)}).exec().then(value => {
-            if (value.idDiscord === discordId){
+const isTheProf = (id, discordId) => {
+    return new Promise(resolve => {
+        structDb.Member.findOne({ _id: mongoose.Types.ObjectId(id) }).exec().then(value => {
+            if (value.idDiscord === discordId) {
                 resolve(value);
             } else {
                 resolve(false);
@@ -58,12 +58,12 @@ const getRoleFromAsso = (assos) => {
 }
 
 function getClassById(_id) {
-    return structDb.Class.findById({_id}).exec();
+    return structDb.Class.findById({ _id }).exec();
 }
 
 const getNameFromIdMember = (_id) => {
     return new Promise((resolve) => {
-        structDb.Member.findById({_id}).exec().then((member) => {
+        structDb.Member.findById({ _id }).exec().then((member) => {
             resolve(member.firstname + ' ' + member.lastname);
         });
     })
@@ -120,11 +120,11 @@ function getMemberById(_id) {
 
 const getAllMembersFromRole = (roleName) => {
     return new Promise(resolve => {
-        structDb.Role.findOne({name:roleName+' élève'}).exec().then(role => {
-            structDb.AssoGroupRole.findOne({Role:role}).exec().then(asso => {
-                structDb.AssoMemberGroup.find({Group:asso.Group}).exec().then(asso2 => {
+        structDb.Role.findOne({ name: roleName + ' élève' }).exec().then(role => {
+            structDb.AssoGroupRole.findOne({ Role: role }).exec().then(asso => {
+                structDb.AssoMemberGroup.find({ Group: asso.Group }).exec().then(asso2 => {
                     let promises = [];
-                    asso2.forEach(element =>{
+                    asso2.forEach(element => {
                         const _id = mongoose.Types.ObjectId(element.Member);
                         promises.push(getMemberById(_id));
                     })
@@ -173,12 +173,12 @@ const getAllRolesFromMemberID = (id) => {
 }
 
 const getRoleById = (_id) => {
-    const query = structDb.Role.findById({_id}).exec();
+    const query = structDb.Role.findById({ _id }).exec();
     return query;
 }
 
 const getAssoGroupFromMember = (member) => {
-    const assos = structDb.AssoMemberGroup.find({Member: member}).exec();
+    const assos = structDb.AssoMemberGroup.find({ Member: member }).exec();
     return assos;
 }
 
@@ -189,18 +189,18 @@ const getAllRolesDB = () => {
 }
 
 const getAssoRolefromGroupDB = (group) => {
-    const assos = structDb.AssoGroupRole.find({Group: group}).exec();
+    const assos = structDb.AssoGroupRole.find({ Group: group }).exec();
     return assos;
 }
 
 const getMemberByDiscordId = (id) => {
-    return structDb.Member.findOne({idDiscord: id}).exec();
+    return structDb.Member.findOne({ idDiscord: id }).exec();
 }
 
 
 
 const getGroupByName = (name) => {
-    return structDb.Group.findOne({name: name}).exec();
+    return structDb.Group.findOne({ name: name }).exec();
 }
 
 const createAssoMemberGroup = (member, group) => {
@@ -210,6 +210,14 @@ const createAssoMemberGroup = (member, group) => {
     });
     asso.save();
     return asso;
+}
+
+const getMemberByDiscordIdDB = async(id) => {
+    return await structDb.Member.findOne({ idDiscord: id }).exec();
+}
+
+const getGroupIdByNameDB = (name) => {
+    return structDb.Group.findOne({ name }, '_id').exec();
 }
 
 
@@ -226,6 +234,8 @@ module.exports = {
     getClassById,
     isClassNow,
     isTheProf,
-    getAllMembersFromRole
+    getAllMembersFromRole,
+    getAllMembersDB,
+    getMemberByDiscordIdDB,
+    getGroupIdByNameDB
 }
-

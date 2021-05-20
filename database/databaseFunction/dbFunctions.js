@@ -1,4 +1,20 @@
-const {getAllMembersDB, getAllMembersFromRole, isTheProf, getClassById, isClassNow, getAllRolesFromMemberID, createAndGetOneGroupDB, getAllClassesFromMember, getMemberByDiscordId, getGroupByName, createAssoMemberGroup, getAllRolesDB, getNameFromIdMember} = require('./dbExmpleAction');
+const {
+    getAllMembersDB,
+    getAllMembersFromRole,
+    isTheProf,
+    getClassById,
+    isClassNow,
+    getAllRolesFromMemberID,
+    createAndGetOneGroupDB,
+    getAllClassesFromMember,
+    getMemberByDiscordId,
+    getGroupByName,
+    createAssoMemberGroup,
+    getAllRolesDB,
+    getNameFromIdMember,
+    getMemberByDiscordIdDB,
+    getGroupIdByNameDB
+} = require('./dbExmpleAction');
 
 module.exports = {
     getAllMembersDB,
@@ -13,5 +29,7 @@ module.exports = {
     getAllRolesDB,
     getNameFromIdMember,
     isTheProf,
-    getAllMembersFromRole
+    getAllMembersFromRole,
+    getMemberByDiscordIdDB,
+    getGroupIdByNameDB
 }
