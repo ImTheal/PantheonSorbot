@@ -158,6 +158,10 @@ const getAllClassesFromMember = (id) => {
     })
 }
 
+const getAllClasses = () =>{
+    return structDb.Class.find({}).exec();
+}
+
 const addClass = (newClass) =>{
     const classToAdd = new structDb.Class(newClass);
     return classToAdd.save();
@@ -243,6 +247,7 @@ module.exports = {
     getAllMembersFromRole,
     getMemberByName,
     addClass,
-    getRoleByName
+    getRoleByName,
+    getAllClasses
 }
 

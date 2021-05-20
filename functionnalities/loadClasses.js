@@ -36,9 +36,9 @@ module.exports = (bot) => {
                 console.log(className);
                 console.log(isClass);
                 if (isClass && existingRole) {//Download only png (customize this)
-                    download(message.attachments.first().url).then(lesCours => {
+                    download(message.attachments.first().url, nomfichier).then(lesCours => {
                         const db = require('../database/databaseFunction/dbFunctions')
-                        lesCours.forEach(value =>{
+                        lesCours.forEach(value => {
                             const dateString1 = value.Date + ' ' + value['Heure Debut'];
                             const dateString2 = value.Date + ' ' + value['Heure Fin'];
                             const dateParser = /(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
@@ -47,22 +47,37 @@ module.exports = (bot) => {
                             match = dateString2.match(dateParser);
                             const dateFin = getDateFromJSON(match);
                             const name = value.Professeur.split(' ')
-                            console.log(name);
-                            //TODO check si un cours est déjà prevu à ces horaires si oui modifier le sujet et prof si !=
-                            db.getMemberByName(name[0],name[1]).then(prof => {
-                                const newClass = {
-                                    subject:value.Matiere,
-                                    prof:prof._id,
-                                    dateDebut:dateDebut,
-                                    dateFin:dateFin
-                                }
-                                db.addClass(newClass).then(c => {
-                                    db.getRoleByName(className + ' élève').then(role => {
-                                        role.calendar.push(c._id)
-                                        role.save();
+                            db.getRoleByName(className + ' élève').then(role => {
+                                //get all classes
+                                db.getAllClasses().then(classes =>{
+                                    const classAtSameHour = classes.find(c =>{
+                                        if (c.dateDebut === dateDebut &&
+                                            c.dateFin === dateFin) return true;
+                                    });
+                                    db.getMemberByName(name[0], name[1]).then(prof => {
+                                        //TODO si prof n'existe pas ?? crash /!\
+                                        if (classAtSameHour &&
+                                            classAtSameHour.prof === prof._id &&
+                                            classAtSameHour.subject === value.Matiere){ //modifier prof & subject
+                                            //TODO update document (class)
+                                        } else {
+                                            const newClass = {
+                                                subject: value.Matiere,
+                                                prof: prof._id,
+                                                dateDebut: dateDebut,
+                                                dateFin: dateFin
+                                            }
+                                            db.addClass(newClass).then(c => {
+                                                role.calendar.push(c._id)
+                                                role.save();
+                                            });
+                                        }
                                     })
-                                });
+
+                                })
+
                             })
+
                         })
                     })//Function I will show later
                 }
@@ -72,15 +87,14 @@ module.exports = (bot) => {
 
 }
 
-async function download(url) {
+async function download(url, fileName) {
     return new Promise(resolve => {
         console.log("On passe dans download")
         fetch(url)
             .then(async res => {
-                //ajoute un const pour le nom du fichier selon classe
-                const dest = fs.createWriteStream('data/etudiants.csv');
+                const dest = fs.createWriteStream('data/calendar/ +' + fileName + '.csv');
                 res.body.pipe(dest);
-                await fs.readFile('data/etudiants.csv', 'utf8', function (err, data) {
+                await fs.readFile('data/calendar/ +' + fileName + '.csv', 'utf8', function (err, data) {
                     const res = JSON.parse(CSVToJSON(data))
                     console.log(res);
                     resolve(res)
