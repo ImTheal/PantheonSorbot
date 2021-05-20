@@ -12,7 +12,6 @@ const {
     createAssoMemberGroup,
     getAllRolesDB,
     getNameFromIdMember,
-    getAllMembersDB,
     getMemberByDiscordIdDB,
     getGroupIdByNameDB
 } = require('./dbExmpleAction');
@@ -31,7 +30,6 @@ module.exports = {
     getNameFromIdMember,
     isTheProf,
     getAllMembersFromRole,
-    getAllMembersDB,
     getMemberByDiscordIdDB,
     getGroupIdByNameDB
 }
