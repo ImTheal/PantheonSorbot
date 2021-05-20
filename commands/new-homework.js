@@ -2,82 +2,18 @@ const { addHomeworkDB, checkHomeworkNameDB } = require("../database/databaseFunc
 const { getGroupIdByNameDB } = require("../database/databaseFunction/dbFunctions.js");
 const { homeworkChannel } = require('../config.json');
 const connection = require('../database/mongoose-connection');
-const { MessageAttachment, MessageEmbed } = require('discord.js');
-const onSubmitHomework = require('../functionnalities/manual/on-submit-homework');
+const { MessageAttachment } = require('discord.js');
 const { COMMON } = require("../constants/common.js");
 const { HOMEWORK } = require("../constants/homework.js");
-
-const getArguments = (args) => {
-    let arguments = args.join(' ').split('] [').map(arg => {
-        if (arg.includes('[')) return arg.substring(1);
-        else if (arg.includes(']')) return arg.substring(0, arg.length - 1)
-
-        return arg;
-    });
-
-    const name = arguments[0].split('-').join(' ').toLowerCase();
-    const renderingDate = new Date(arguments[1]);
-    const group = arguments[2].toUpperCase();
-    const type = arguments[3];
-    const description = arguments[4] || '';
-
-    return { name, renderingDate, group, type, description }
-}
-
-const checkArguments = async({ name, renderingDate, group, type }, message) => {
-    let errors = [];
-
-    //Vérification du type
-    if (!['pdf', 'text', 'txt', 'zip', 'java'].includes(type)) errors.push('INVALID_FORMAT');
-
-    //Vérification de la date
-    if (renderingDate <= new Date()) errors.push('INVALID_DATE');
-
-    //Vérification du groupe
-    if (!message.guild.channels.cache
-        .filter(channel => channel.type === "category")
-        .find(channel => channel.name === group)) errors.push('INVALID_GROUP')
-
-    //Vérification du nom
-    await checkHomeworkNameDB(name)
-        .then(res => {
-            if (res) errors.push('INVALID_NAME')
-        })
-
-    return errors.length ? errors : false;
-}
-
-const getHomeworkInstructions = ({ name, type, description, renderingDate, attachment, author }) => {
-    const message = new MessageEmbed()
-        .setTitle(`Nouveau devoir maison ${name}`)
-        .setDescription((description.length && (description + '\n\n')) + 'Veuillez cliquer sur le bouton "✅" afin de soumettre le travail.')
-        .addFields({
-            name: 'Date de rendu',
-            value: renderingDate.toLocaleDateString(undefined, {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })
-        }, {
-            name: 'Type de rendu',
-            value: type
-        })
-        .setFooter(`Pour plus d'informations, l'enseignant ${author.username} est à votre disposition.`);
-
-    if (attachment) message.attachFiles(attachment);
-
-    return message;
-}
+const sendHomeworkValidation = require("../functionnalities/manual/send-homework-validation.js");
+const sendHomeworkInstructions = require("../functionnalities/manual/send-homework-instructions.js");
 
 module.exports = {
     commands: 'new-homework',
     description: 'Create a new homework for students',
     expectedArgs: '<name> <date> <group> <type> <description>',
     permissionError: 'Tu as besoin des droits administrateurs pour executer cette commande',
-    minArgs: 2,
+    minArgs: 5,
     maxArgs: null,
     permissions: '',
     requiredRoles: [],
@@ -89,6 +25,8 @@ module.exports = {
             connection.run().then(async() => {
 
                 const { guild, author } = message;
+
+                const _teacher = author.id;
 
                 //Rôle de tout le monde
                 const everyoneRole = guild.roles.cache.find(role => role.name === '@everyone');
@@ -126,56 +64,84 @@ module.exports = {
 
                     let _homework;
 
-                    //Ajout du devoir à la base de donnée
-                    getGroupIdByNameDB(group)
+                    //On récupère le groupe avec le bon nom
+                    await getGroupIdByNameDB(group)
                         .then(_group => {
+                            //Ajout du devoir à la base de donnée
                             addHomeworkDB({
                                     name,
                                     _channel: channel.id,
                                     _guild: guild.id,
                                     _group,
-                                    _teacher: author.id,
+                                    _teacher,
                                     renderingDate,
                                     type,
                                     description
                                 })
                                 .then(homework => _homework = homework._id)
-                        })
+                                .then(() => {
+                                    //Envoi d'un message de confirmation dans le channel des devoirs
+                                    sendHomeworkValidation(author, message.channel, { _homework, name, _homeworkChannel: channel.id });
 
-                    message.reply(HOMEWORK['HOMEWORK_ADDED']);
-
-                    const homeworkInstructions = getHomeworkInstructions({ name, type, description, renderingDate, attachment, author })
-
-                    channel.send(homeworkInstructions)
-                        .then(async(msg) => {
-                            msg.react('✅');
-                            const filter = (reaction) => reaction.emoji.name === '✅' && (reaction.count === 2);
-                            const collector = msg.createReactionCollector(filter);
-                            collector.on('collect', async(_, user) => {
-
-                                onSubmitHomework(user, {
-                                    name,
-                                    renderingDate,
-                                    type,
-                                    _id: _homework
-                                });
-
-                                const userReactions = msg.reactions.cache.filter(reaction => reaction.users.cache.has(user.id));
-                                try {
-                                    for (const reaction of userReactions.values()) {
-                                        await reaction.users.remove(user.id);
-                                    }
-                                } catch (error) {
-                                    console.error('Failed to remove reactions.');
-                                }
-                            });
+                                    //Envoi des intructions du devoir
+                                    sendHomeworkInstructions({
+                                        channel,
+                                        homework: {
+                                            name,
+                                            type,
+                                            description,
+                                            renderingDate,
+                                            attachment,
+                                            author,
+                                            _id: _homework
+                                        }
+                                    })
+                                })
                         })
                 })
-
             })
-
         } catch (error) {
-            return message.reply(COMMON['EXPECTED_FORM'] + ' : ' + '=new-homework [name] [date] [group] [type] [descrition]');
+            return message.reply(COMMON['EXPECTED_FORM'] + ' : ' + '=new-homework [name] [date] [group] [type] [description]');
         }
     }
+}
+
+function getArguments(args) {
+    let arguments = args.join(' ').split('] [').map(arg => {
+        if (arg.includes('[')) return arg.substring(1);
+        else if (arg.includes(']')) return arg.substring(0, arg.length - 1)
+
+        return arg;
+    });
+
+    const name = arguments[0].split('-').join(' ').toLowerCase();
+    const renderingDate = new Date(arguments[1]);
+    const group = arguments[2].toUpperCase();
+    const type = arguments[3];
+    const description = arguments[4] || '';
+
+    return { name, renderingDate, group, type, description }
+}
+
+async function checkArguments({ name, renderingDate, group, type }, message) {
+    let errors = [];
+
+    //Vérification du type
+    if (!['pdf', 'text', 'txt', 'zip', 'java'].includes(type)) errors.push('INVALID_FORMAT');
+
+    //Vérification de la date
+    if (renderingDate <= new Date()) errors.push('INVALID_DATE');
+
+    //Vérification du groupe
+    if (!message.guild.channels.cache
+        .filter(channel => channel.type === "category")
+        .find(channel => channel.name === group)) errors.push('INVALID_GROUP')
+
+    //Vérification du nom
+    await checkHomeworkNameDB(name)
+        .then(res => {
+            if (res) errors.push('INVALID_NAME')
+        })
+
+    return errors.length ? errors : false;
 }
