@@ -106,6 +106,7 @@ function fillClasswithProfName(r) {
     return new Promise((resolve) => {
         let promises = []
         r.forEach(element => {
+            console.log(element)
             promises.push(getClasses(element));
         })
         Promise.all(promises).then(values => {
