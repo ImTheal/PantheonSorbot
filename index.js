@@ -50,4 +50,5 @@ bot.on('ready', async() => {
     readFunc('functionnalities/auto')
 })
 
+
 bot.login(process.env.TOKENSOR)
