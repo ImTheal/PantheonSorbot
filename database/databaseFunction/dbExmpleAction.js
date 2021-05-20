@@ -162,6 +162,10 @@ const getAllClasses = () =>{
     return structDb.Class.find({}).exec();
 }
 
+const findAndUpadateClass = (query, update) =>{
+    structDb.Class.findOneAndUpdate(query,update).exec();
+}
+
 const addClass = (newClass) =>{
     const classToAdd = new structDb.Class(newClass);
     return classToAdd.save();
@@ -248,6 +252,7 @@ module.exports = {
     getMemberByName,
     addClass,
     getRoleByName,
-    getAllClasses
+    getAllClasses,
+    findAndUpadateClass
 }
 

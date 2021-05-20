@@ -1,6 +1,7 @@
 global.fetch = require('node-fetch');
 const csvjson = require('csvjson');
 const fs = require(`fs`);
+const mongoose = require("mongoose");
 const {mongo} = require("mongoose");
 
 function getDateFromJSON(match) {
@@ -33,8 +34,6 @@ module.exports = (bot) => {
                 const isClass = nomfichier.substring(0, 6) === `Cours_`;
                 const className = nomfichier.substring(6).split('.').slice(0, -1).join('.')
                 const existingRole = categoryChannels.find(channel => channel.name === className);
-                console.log(className);
-                console.log(isClass);
                 if (isClass && existingRole) {//Download only png (customize this)
                     download(message.attachments.first().url, nomfichier).then(lesCours => {
                         const db = require('../database/databaseFunction/dbFunctions')
@@ -51,15 +50,19 @@ module.exports = (bot) => {
                                 //get all classes
                                 db.getAllClasses().then(classes =>{
                                     const classAtSameHour = classes.find(c =>{
-                                        if (c.dateDebut === dateDebut &&
-                                            c.dateFin === dateFin) return true;
+                                        if (c.dateDebut.getTime() === dateDebut.getTime() &&
+                                            c.dateFin.getTime() === dateFin.getTime()) return true;
                                     });
                                     db.getMemberByName(name[0], name[1]).then(prof => {
                                         //TODO si prof n'existe pas ?? crash /!\
-                                        if (classAtSameHour &&
-                                            classAtSameHour.prof === prof._id &&
-                                            classAtSameHour.subject === value.Matiere){ //modifier prof & subject
-                                            //TODO update document (class)
+                                        if (classAtSameHour){
+                                               const query = {_id:classAtSameHour._id};
+                                               const update = {
+                                                   subject: value.Matiere,
+                                                   prof:prof._id
+                                               }
+                                               mongoose.set('useFindAndModify', false);
+                                               db.findAndUpadateClass(query,update);
                                         } else {
                                             const newClass = {
                                                 subject: value.Matiere,
@@ -89,14 +92,12 @@ module.exports = (bot) => {
 
 async function download(url, fileName) {
     return new Promise(resolve => {
-        console.log("On passe dans download")
         fetch(url)
             .then(async res => {
-                const dest = fs.createWriteStream('data/calendar/ +' + fileName + '.csv');
+                const dest = fs.createWriteStream('data/calendar/' + fileName);
                 res.body.pipe(dest);
-                await fs.readFile('data/calendar/ +' + fileName + '.csv', 'utf8', function (err, data) {
+                await fs.readFile('data/calendar/' + fileName, 'utf8', function (err, data) {
                     const res = JSON.parse(CSVToJSON(data))
-                    console.log(res);
                     resolve(res)
                 });
             });
@@ -104,9 +105,9 @@ async function download(url, fileName) {
 }
 
 function CSVToJSON(csvData) {
-    var data = CSVToArray(csvData);
-    var objData = [];
-    for (var i = 1; i < data.length; i++) {
+    const data = CSVToArray(csvData);
+    let objData = [];
+    for (let i = 1; i < data.length; i++) {
         objData[i - 1] = {};
         for (var k = 0; k < data[0].length && k < data[i].length; k++) {
             var key = data[0][k];
@@ -121,22 +122,22 @@ function CSVToJSON(csvData) {
 
 function CSVToArray(csvData, delimiter) {
     delimiter = (delimiter || ";");
-    var pattern = new RegExp((
+    const pattern = new RegExp((
         "(\\" + delimiter + "|\\r?\\n|\\r|^)" +
         "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
         "([^\"\\" + delimiter + "\\r\\n]*))"), "gi");
-    var data = [[]];
-    var matches = null;
+    let data = [[]];
+    let matches = null;
     while (matches = pattern.exec(csvData)) {
-        var matchedDelimiter = matches[1];
-        if (matchedDelimiter.length && (matchedDelimiter != delimiter)) {
+        let matchedDelimiter = matches[1];
+        if (matchedDelimiter.length && (matchedDelimiter !== delimiter)) {
             data.push([]);
         }
         if (matches[2]) {
-            var matchedDelimiter = matches[2].replace(
+            matchedDelimiter = matches[2].replace(
                 new RegExp("\"\"", "g"), "\"");
         } else {
-            var matchedDelimiter = matches[3];
+            matchedDelimiter = matches[3];
         }
         if (matchedDelimiter !== '') {
             data[data.length - 1].push(matchedDelimiter);

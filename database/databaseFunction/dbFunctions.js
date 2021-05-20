@@ -1,4 +1,4 @@
-const {getAllMembersDB, getAllClasses, getRoleByName, addClass, getMemberByName, getAllMembersFromRole, isTheProf, getClassById, isClassNow, getAllRolesFromMemberID, createAndGetOneGroupDB, getAllClassesFromMember, getMemberByDiscordId, getGroupByName, createAssoMemberGroup, getAllRolesDB, getNameFromIdMember} = require('./dbExmpleAction');
+const {getAllMembersDB, findAndUpadateClass, getAllClasses, getRoleByName, addClass, getMemberByName, getAllMembersFromRole, isTheProf, getClassById, isClassNow, getAllRolesFromMemberID, createAndGetOneGroupDB, getAllClassesFromMember, getMemberByDiscordId, getGroupByName, createAssoMemberGroup, getAllRolesDB, getNameFromIdMember} = require('./dbExmpleAction');
 
 module.exports = {
     getAllMembersDB,
@@ -17,6 +17,7 @@ module.exports = {
     getAllMembersFromRole,
     addClass,
     getRoleByName,
-    getAllClasses
+    getAllClasses,
+    findAndUpadateClass
 
 }
