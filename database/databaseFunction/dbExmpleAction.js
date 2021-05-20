@@ -220,7 +220,7 @@ const getAllClasses = () =>{
     return structDb.Class.find({}).exec();
 }
 
-const findAndUpadateClass = (query, update) =>{
+const findAndUpdateClass = (query, update) =>{
     structDb.Class.findOneAndUpdate(query,update).exec();
 }
 
@@ -259,12 +259,12 @@ module.exports = {
     getAllMembersFromRole,
     getAllMembersDB,
     getMemberByDiscordIdDB,
-    getGroupIdByNameDB
+    getGroupIdByNameDB,
     getAllMembersFromRole,
     getMemberByName,
     addClass,
     getRoleByName,
     getAllClasses,
-    findAndUpadateClass
+    findAndUpdateClass
 }
 
