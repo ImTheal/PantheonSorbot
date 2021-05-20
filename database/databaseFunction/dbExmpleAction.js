@@ -216,6 +216,24 @@ const createAssoMemberGroup = (member, group) => {
     return asso;
 }
 
+const getAllClasses = () =>{
+    return structDb.Class.find({}).exec();
+}
+
+const findAndUpadateClass = (query, update) =>{
+    structDb.Class.findOneAndUpdate(query,update).exec();
+}
+
+const addClass = (newClass) =>{
+    const classToAdd = new structDb.Class(newClass);
+    return classToAdd.save();
+}
+
+
+const getMemberByName = (firstname, lastname) => {
+    return structDb.Member.findOne({firstname, lastname}).exec();
+}
+
 const getMemberByDiscordIdDB = async(id) => {
     return await structDb.Member.findOne({ idDiscord: id }).exec();
 }
