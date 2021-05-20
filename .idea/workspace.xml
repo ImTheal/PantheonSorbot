@@ -2,11 +2,233 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e89c63d9-ace2-4335-a3ec-ec0d25ff52f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/PantheonSorbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PantheonSorbot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/databaseArchi/test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/dbExmpleAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/dbExmpleAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/bench.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/abort.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/defer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/iterate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/readable_asynckit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/readable_parallel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/readable_serial.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/readable_serial_ordered.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/state.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/streamify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/lib/terminator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/parallel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/serial.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/serialOrdered.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/asynckit/stream.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-types/HISTORY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-types/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-types/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-types/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/node_modules/mime-types/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@discordjs/form-data/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@discordjs/form-data/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/mongodb/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/mongodb/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/mongodb/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/mongodb/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/mongodb/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/mongodb/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/async_hooks.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/async_hooks.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/child_process.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/child_process.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/events.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/events.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/fs.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/fs.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/fs/promises.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/fs/promises.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/http.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/http.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/http2.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/http2.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/net.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/net.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/path.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/path.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/perf_hooks.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/perf_hooks.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/readline.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/readline.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/repl.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/repl.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/ts3.6/base.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/ts3.6/base.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/util.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/util.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/v8.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/v8.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/vm.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/vm.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@types/node/worker_threads.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@types/node/worker_threads.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bl/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bl/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bson/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/bson/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/combined-stream/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/combined-stream/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/delayed-stream/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/delayed-stream/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/denque/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/denque/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/esm/discord.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/esm/discord.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/@discordjs/collection/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/@discordjs/collection/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/@discordjs/collection/dist/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/@discordjs/collection/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/@discordjs/collection/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/browser.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.mjs.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.umd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/dist/abort-controller.umd.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/polyfill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/abort-controller/polyfill.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/dist/event-target-shim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/dist/event-target-shim.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/dist/event-target-shim.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/dist/event-target-shim.mjs.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/dist/event-target-shim.umd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/dist/event-target-shim.umd.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/event-target-shim/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/core/FFmpeg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/core/VolumeTransformer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/core/WebmBase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/core/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/opus/OggDemuxer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/opus/Opus.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/opus/WebmDemuxer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/opus/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/util/Constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/util/loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/vorbis/WebmDemuxer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/src/vorbis/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/typings/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/typings/opus.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/prism-media/typings/vorbis.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/setimmediate/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/setimmediate/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/setimmediate/setImmediate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/AUTHORS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/nacl-fast.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/nacl-fast.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/nacl.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/nacl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/nacl.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/tweetnacl/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/buffer-util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/event-target.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/extension.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/limiter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/permessage-deflate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/receiver.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/sender.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/stream.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/validation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/websocket-server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/lib/websocket.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/node_modules/ws/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/Action.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/Action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/ActionsManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/ActionsManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/InviteDelete.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/InviteDelete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/MessageReactionAdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/MessageReactionAdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/MessageReactionRemove.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/actions/MessageReactionRemove.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/ClientVoiceManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/ClientVoiceManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/VoiceConnection.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/VoiceConnection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/networking/VoiceWebSocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/networking/VoiceWebSocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/receiver/PacketHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/receiver/PacketHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/util/Silence.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/voice/util/Silence.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/client/websocket/handlers/GUILD_MEMBER_UPDATE.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/client/websocket/handlers/GUILD_MEMBER_UPDATE.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/errors/Messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/errors/Messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/managers/ReactionUserManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/managers/ReactionUserManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/sharding/Shard.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/sharding/Shard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/sharding/ShardClientUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/sharding/ShardClientUtil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/sharding/ShardingManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/sharding/ShardingManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/structures/Guild.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/structures/Guild.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/structures/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/structures/Message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/structures/MessageReaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/structures/MessageReaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/structures/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/structures/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/util/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/util/Constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/util/DataResolver.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/util/DataResolver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/src/util/Snowflake.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/src/util/Snowflake.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/typings/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/typings/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/typings/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/webpack/discord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/webpack/discord.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/discord.js/webpack/discord.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/discord.js/webpack/discord.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/inherits/inherits.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/inherits/inherits.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/inherits/inherits_browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/inherits/inherits_browser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/inherits/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/inherits/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/HISTORY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/bulk/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/bulk/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/cmap/connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/cmap/connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/core/auth/mongo_credentials.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/core/auth/mongo_credentials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/core/sdam/topology.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/core/sdam/topology.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/core/topologies/replset.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/core/topologies/replset.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/core/wireprotocol/command.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/core/wireprotocol/command.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/mongo_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongo_client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/bulk_write.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/bulk_write.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/connect.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/connect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/find_one_and_replace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/find_one_and_replace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/find_one_and_update.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/find_one_and_update.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/insert_many.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/operations/insert_many.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongodb/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongodb/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/History.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/History.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/dist/browser.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/dist/browser.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/browser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/browser/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/cast.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/cast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/populate/getSchemaTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/populate/getSchemaTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/populate/lookupLocalFields.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/populate/lookupLocalFields.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/query/castUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/query/castUpdate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/schema/merge.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/helpers/schema/merge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/options/SchemaArrayOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/options/SchemaArrayOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/query.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/queryhelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/queryhelpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mongoose/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mongoose/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ms/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ms/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/node-fetch/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/node-fetch/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/optional-require/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/optional-require/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/path/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/path/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/process/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/process/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/safe-buffer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/safe-buffer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/saslprep/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/saslprep/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/util/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/util/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/util/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/util/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/util/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/util/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/util/support/isBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/util/support/isBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/util/support/isBufferBrowser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/util/support/isBufferBrowser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/util/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/util/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,21 +244,40 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1sLPlVhyRDQ8WuXJhjp86Y2WIoo" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.last.introduce.type" value="CONST" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="showLigatures" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="exempleDB.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/database/exempleDB.js" working-dir="$PROJECT_DIR$/database">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.exempleDB.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -47,6 +288,8 @@
       <option name="presentableId" value="Default" />
       <updated>1620649051581</updated>
       <workItem from="1620649057744" duration="625000" />
+      <workItem from="1620766532782" duration="12044000" />
+      <workItem from="1621463044912" duration="241000" />
     </task>
     <servers />
   </component>
@@ -64,10 +307,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

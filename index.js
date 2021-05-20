@@ -6,6 +6,7 @@ const fetch = require('node-fetch');
 const { report } = require('process');
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
+global.racine = path.resolve(__dirname); //racine est accessible partout et correspond a la racine du projet
 
 require('dotenv').config({ path: __dirname + '/.env' })
 

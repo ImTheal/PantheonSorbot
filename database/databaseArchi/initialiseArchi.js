@@ -1,7 +1,6 @@
 const { Member, memberSchema } = require('./member');
 const { Code, codeSchema } = require('./code');
-const { Calendar, calendarSchema } = require('./calendar');
-const { Classe, classeSchema } = require('./classe');
+const { Class, classSchema } = require('./class');
 const { Group, groupSchema } = require('./group');
 const { Role, roleSchema } = require('./role');
 const { AssoGroupRole, assoGroupRoleSchema } = require('./assoGroupRole');
@@ -14,10 +13,8 @@ module.exports = {
     Member,
     codeSchema,
     Code,
-    calendarSchema,
-    Calendar,
-    classeSchema,
-    Classe,
+    classSchema,
+    Class,
     groupSchema,
     Group,
     roleSchema,
