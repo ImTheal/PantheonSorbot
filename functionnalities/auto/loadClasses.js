@@ -19,10 +19,20 @@ function getDateFromJSON(match) {
 module.exports = (bot) => {
     bot.on('message', message => {
 
-        const nomfichier = message.attachments.first().name;
+        function checkRoles(str){
+            if(str.name=='admin'){
+                return true
+            }else{
+                return false
+            }
+        }
 
         if (message.attachments.first()) {//checks if an attachment is sent
-            const connection = require('../database/mongoose-connection')
+
+            if (!message.member.roles.cache.some(checkRoles)) return
+
+            const nomfichier = message.attachments.first().name;
+            const connection = require(global.racine+'/database/mongoose-connection')
             connection.run().then(async () => {
 
                 console.log("Il y a un attachment")
@@ -94,9 +104,9 @@ async function download(url, fileName) {
     return new Promise(resolve => {
         fetch(url)
             .then(async res => {
-                const dest = fs.createWriteStream('data/calendar/' + fileName);
+                const dest = fs.createWriteStream(global.racine+'data/calendar/' + fileName);
                 res.body.pipe(dest);
-                await fs.readFile('data/calendar/' + fileName, 'utf8', function (err, data) {
+                await fs.readFile(global.racine+'data/calendar/' + fileName, 'utf8', function (err, data) {
                     const res = JSON.parse(CSVToJSON(data))
                     resolve(res)
                 });

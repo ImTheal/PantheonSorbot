@@ -3,24 +3,11 @@ const { addHomeworkToStudentDB } = require("../../database/databaseFunction/home
 const { COMMON } = require('../../constants/common');
 const { HOMEWORK } = require('../../constants/homework');
 
-const checkAnswerType = (message, type) => {
-    if (type === 'text') return message.content.length && !message.attachments.first();
-
-    if (message.attachments.first()) {
-        const filename = message.attachments.first().attachment;
-        const extension = filename.split('.')[filename.split('.').length - 1];
-
-        return extension === type
-    }
-
-    return false;
-}
-
 module.exports = (user, homework) => {
-    user.send(`Veuillez soumettre le travail ci-dessous pour le devoir ${homework.name}. L'action pendra fin au bout de 5min.`)
+
+    user.send(`Veuillez soumettre le travail ci-dessous pour le devoir ${homework.name}. L'action prendra fin au bout de 5min.`)
         .then(msg => {
-            const answerFilter = _ => true;
-            msg.channel.awaitMessages(answerFilter, {
+            msg.channel.awaitMessages(_ => true, {
                     max: 1,
                     time: 1000 * 5 * 60, //5 minutes
                     errors: ['time']
@@ -59,4 +46,17 @@ module.exports = (user, homework) => {
                 })
         })
 
+}
+
+function checkAnswerType(message, type) {
+    if (type === 'text') return message.content.length && !message.attachments.first();
+
+    if (message.attachments.first()) {
+        const filename = message.attachments.first().attachment;
+        const extension = filename.split('.')[filename.split('.').length - 1];
+
+        return extension === type
+    }
+
+    return false;
 }
