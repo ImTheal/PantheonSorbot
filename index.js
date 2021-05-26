@@ -173,4 +173,4 @@ bot.on("guildMemberRemove", member => {
     channel.send('**[-]** <@!' + member + '>');
 });
 
-bot.login(process.env.TOKEN)
+bot.login(process.env.TOKENSOR)
