@@ -3,6 +3,8 @@ const {
     getMemberByDiscordIdDB,
     getGroupIdByNameDB
 } = require('./dbExmpleAction');
+const { setCodeDB } = require('./dbAction');
+const { setMemberChecked } = require('./dbAction');
 
 module.exports = {
     getAllMembersDB,
@@ -30,5 +32,7 @@ module.exports = {
     checkMemberAndDeleteGroupsIfExists,
     deleteGroupsOfMember,
     checkMemberDB,
-    addMemberInGroup
+    addMemberInGroup,
+    setCodeDB,
+    setMemberChecked,
 }
