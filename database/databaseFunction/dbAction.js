@@ -19,7 +19,7 @@ const setMemberChecked = async (memberMail) =>
     const doc = await stuctDb.Member.findOneAndUpdate(filter, update, {
         new: true,
     });
-    
+    console.log("le doc" + doc);
     return doc;
 };
 

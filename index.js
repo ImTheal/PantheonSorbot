@@ -5,6 +5,8 @@ const { prefix, token } = require('./config.json');
 const fetch = require('node-fetch');
 const { report } = require('process');
 const bot = new Discord.Client();
+const nodemailer = require('nodemailer');
+const libConnection = require('./database/mongoose-connection');
 bot.commands = new Discord.Collection();
 global.racine = path.resolve(__dirname); //racine est accessible partout et correspond a la racine du projet
 
@@ -50,11 +52,12 @@ bot.on('ready', async() => {
     readFunc('functionnalities/auto')
 })
 
+// lors de l'arrivée d'un membre sur le discord
 bot.on("guildMemberAdd", member => {
     const channel = member.guild.channels.cache.get('835484727040540672');
       channel.send('**[+]** <@!' + member + '>');
   
-      // Start function
+      // Demande de l'adresse mail en privé
       const requestEmailAddress = async function()
       {
           const msg = await member.send('Bonjour <@!' + member + '>, afin de vérifier ton identité, nous allons t\'envoyer un code de' +
@@ -70,8 +73,10 @@ bot.on("guildMemberAdd", member => {
       
           try 
           {
+              // s'il s'agit bien d'une adresse mail
               if(collected.first().content.indexOf('@') > -1)
               {
+                console.log(nodemailer);
                   const transporter = nodemailer.createTransport(
                       {
                           service: 'gmail',
@@ -80,9 +85,8 @@ bot.on("guildMemberAdd", member => {
                               pass: 'Sorbot2021!',
                           },
                       });
-                  
+                      
                   const code = getRandomArbitrary(1000, 10000);
-  
                   const mailOptions =
                   {
                       from: 'pantheonsorbot@gmail.com',
@@ -90,7 +94,7 @@ bot.on("guildMemberAdd", member => {
                       subject: 'Code de vérification',
                       text: 'Code à envoyer au bot : ' + code,
                   };
-  
+                  // alors envoie du code avec stockage en BD.
                   transporter.sendMail(mailOptions, function(error, info)
                   {
                       if (error)
@@ -109,7 +113,7 @@ bot.on("guildMemberAdd", member => {
                                   console.log('code into DB' + boolean);
                               });
                           });
-  
+                          // on attends ensuite la réponse.
                           requestCode(code, collected.first().content.toLowerCase());
                       }
                   });
@@ -187,4 +191,4 @@ bot.on("guildMemberAdd", member => {
   });
 
 
-bot.login(process.env.TOKENTHEAL)
+bot.login("Nzc5MDkzNjA4NzcwNTY4MjIy.X7bhdw.J0DkI0rIc1EsSf7NkkbDthDau_8")
