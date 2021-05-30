@@ -5,7 +5,7 @@ module.exports = (bot) => {
     bot.on('message',async message => {
 
         function checkRoles(str){
-            if(str.name=='admin'){
+            if(str.name==='admin'){
                 return true
             }else{
                 return false
@@ -13,12 +13,12 @@ module.exports = (bot) => {
         }
 
 
-        if (message.attachments.first()) {
-        
-            if (!message.member.roles.cache.some(checkRoles)) return
+        if (message.attachments.first() ) {
+            const nomfichier = message.attachments.first().name
+            if (!message.member.roles.cache.some(checkRoles) || nomfichier.substring(0, 6) === `Cours_`) return
     
 
-            const nomfichier = message.attachments.first().name
+
             console.log("Il y a un attachment")
             console.log("C'est : " + message.attachments.first().name)
             if (nomfichier.substring(nomfichier.length-4) === `.csv`) {
