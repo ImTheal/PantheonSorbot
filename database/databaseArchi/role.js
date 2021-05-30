@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const {Schema} = require("mongoose");
 
 const roleSchema = new mongoose.Schema({
     name: String,
-    calendar:{type: mongoose.Schema.Types.ObjectId, ref: 'calendar'}
+    calendar:[Schema.Types.ObjectId]
 })
 
 //here to deploy methods
