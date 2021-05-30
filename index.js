@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const path = require('path')
 const fs = require('fs');
 const { prefix, token } = require('./config.json');
-const fetch = require('node-fetch');
+global.fetch = require('node-fetch');
 const { report } = require('process');
 const bot = new Discord.Client();
 const nodemailer = require('nodemailer');
@@ -191,8 +191,5 @@ bot.on("guildMemberAdd", member => {
   });
 
 
-<<<<<<< HEAD
-bot.login(process.env.sorbottoken)
-=======
+
 bot.login(process.env.TOKENTHEAL);
->>>>>>> master

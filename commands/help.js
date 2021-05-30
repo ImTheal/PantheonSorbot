@@ -16,10 +16,10 @@ module.exports = {
       (typeof cmd.commands === 'string') ? str+=cmd.commands : str+=cmd.commands[0]
       str+= "** "
       if(cmd.expectedArgs) str+=cmd.expectedArgs
+      if(!str && !cmd.description){
+        msg.addField(str,cmd.description)
+      }
       
-      msg.addField(str,cmd.description)
-
-
     }
     message.channel.send(msg);
   }

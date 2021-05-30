@@ -20,7 +20,7 @@ module.exports = (bot) => {
     bot.on('message', message => {
 
         function checkRoles(str){
-            if(str.name=='admin'){
+            if(str.name==='admin'){
                 return true
             }else{
                 return false
@@ -43,18 +43,24 @@ module.exports = (bot) => {
 
                 const isClass = nomfichier.substring(0, 6) === `Cours_`;
                 const className = nomfichier.substring(6).split('.').slice(0, -1).join('.')
+                console.log(isClass + ' ' + className)
                 const existingRole = categoryChannels.find(channel => channel.name === className);
                 if (isClass && existingRole) {//Download only png (customize this)
                     download(message.attachments.first().url, nomfichier).then(lesCours => {
-                        const db = require('../database/databaseFunction/dbFunctions')
+                        const db = require('../../database/databaseFunction/dbFunctions')
                         lesCours.forEach(value => {
                             const dateString1 = value.Date + ' ' + value['Heure Debut'];
                             const dateString2 = value.Date + ' ' + value['Heure Fin'];
+                            console.log(dateString1)
                             const dateParser = /(\d{2})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
                             let match = dateString1.match(dateParser);
+                            console.log(match)
                             const dateDebut = getDateFromJSON(match);
                             match = dateString2.match(dateParser);
+                            console.log(dateDebut)
+
                             const dateFin = getDateFromJSON(match);
+                            console.log(dateFin)
                             const name = value.Professeur.split(' ')
                             db.getRoleByName(className + ' élève').then(role => {
                                 //get all classes
@@ -104,9 +110,12 @@ async function download(url, fileName) {
     return new Promise(resolve => {
         fetch(url)
             .then(async res => {
-                const dest = fs.createWriteStream(global.racine+'data/calendar/' + fileName);
+                const s = global.racine+'/data/calendar/';
+
+                const dest = fs.createWriteStream(s + fileName);
+                console.log(s)
                 res.body.pipe(dest);
-                await fs.readFile(global.racine+'data/calendar/' + fileName, 'utf8', function (err, data) {
+                await fs.readFile(s + fileName, 'utf8', function (err, data) {
                     const res = JSON.parse(CSVToJSON(data))
                     resolve(res)
                 });
