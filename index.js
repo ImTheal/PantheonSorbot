@@ -191,4 +191,4 @@ bot.on("guildMemberAdd", member => {
   });
 
 
-bot.login("Nzc5MDkzNjA4NzcwNTY4MjIy.X7bhdw.J0DkI0rIc1EsSf7NkkbDthDau_8")
+bot.login(process.env.TOKENTHEAL);
