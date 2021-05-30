@@ -59,7 +59,7 @@ module.exports = (bot, commandOptions) => {
     commands = [commands]
   }
 
-  console.log(`Enregitrement de la commande "${commands[0]}"`)
+  console.log(`Commande chargée : "${commands[0]}"`)
 
   // S'assurer que les permissions sont bien stockees dans un tableau et sont valides
   if (permissions.length) {
