@@ -191,8 +191,5 @@ bot.on("guildMemberAdd", member => {
   });
 
 
-<<<<<<< HEAD
-bot.login(process.env.TOKENTEST)
-=======
+
 bot.login(process.env.TOKENTHEAL);
->>>>>>> master
